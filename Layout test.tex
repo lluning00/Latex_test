@@ -1,0 +1,300 @@
+\documentclass{article}
+%\documentclass[a4paper,11pt,onecolumn,twoside]{article}%book, report, letter
+%Author 刘禄宁
+%TexStudio 编写中文文档时，设置选项中 构建 选 Xelatex，编译  用UT——F8。 编写英文文档时  构建用 PdfLatex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  packages
+%    这部分声明需要用到的包
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ctex}%用该包设置以下内容正常显示中文。
+\usepackage{graphicx}%图片
+\usepackage{geometry}%页边距
+\usepackage{setspace}%行间距
+\usepackage{float}
+\usepackage{booktabs}%插入表格
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{cite}%引用
+%\usepackage{lastpage}%页眉页脚
+\usepackage{fancyhdr}%页眉页脚
+
+%\usepackage{CJK}         % CJK 中文支持
+%\usepackage{fancyhdr}
+%\usepackage{amsmath,amsfonts,amssymb,graphicx}    % EPS 图片支持
+%\usepackage{subfigure}   % 使用子图形
+%\usepackage{indentfirst} % 中文段落首行缩进
+%\usepackage{bm}          % 公式中的粗体字符（用命令\boldsymbol）
+%\usepackage{multicol}    % 正文双栏
+%\usepackage{indentfirst} % 中文首段缩进
+%\usepackage{picins}      % 图片嵌入段落宏包 比如照片
+%\usepackage{abstract}    % 2栏文档，一栏摘要及关键字宏包
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 标题，作者，通信地址定义
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\heiti Title: 外商直接投资}%黑体
+
+\author{\kaishu  authou name \thanks{ 作者信息：广西大学 商学院，硕士研究生，研究方向：XXXX} \\
+					（广西大学商学院，  530004）   }
+					
+\date{\  }
+
+%	\title{\huge{王母娘娘寿筵上蟠桃生长过程\\
+%			仿真与分析}\thanks{收稿日期:~XXXX$-$XX$-$XX. 基金项目：国家自然科学基金资助项目~(51685168)}}
+%	\author{猴哥，八戒\\[2pt]
+%		\normalsize
+%		（新西方大学取经系，大唐省~长安市~123456） \\[2pt]}
+%	\date{}  % 这一行用来去掉默认的日期显示
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 首页页眉页脚定义
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%empty 没有页眉和页脚
+%plain 没有页眉，页脚中部放置页码。
+%headings 没有页脚，页眉包含章节的标题和页码。book使用
+%myheadings 没有页脚，页眉页码和使用者所定义的信息。
+%\fancypagestyle{plain}{
+%	\fancyhf{}
+%	\lhead{第~XX~卷\quad 第~X~期\\
+%		\scriptsize{XXXX~年~XX~月}}%左页眉
+%	\chead{\centering{西~~天~~取~~经~~记\\			\scriptsize{\textbf{The trip to get the Sutra}}
+%			}}
+%	\rhead{Vol. XX, No. XX\\
+%		\scriptsize{October, 2004}}
+%	\lfoot{}%左页脚
+%	\cfoot{}
+%	\rfoot{}%右页脚
+	}
+
+%\fancyhead[RO,LE]{\bfseries 机器学习串串烧} %R右，L左，C中，O奇数页，E偶数页
+%\fancyhead[LO,RE]{\bfseries BYR~金良}
+%\fancyfoot[C]{\thepage $\slash$ \pageref{LastPage}}% 需要引入包\usepackage{lastpage}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 首页后根据奇偶页不同设置页眉页脚
+% R,C,L分别代表左中右，O,E代表奇偶页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+
+%\fancyhead[RE]{第~XX~卷}
+%\fancyhead[CE]{西~~天~~取~~经~~记}
+
+%\fancyhead[LE,RO]{\thepage}
+\fancyhead[CO]{ Title: 外商直接投资 }
+%\fancyhead[LO]{第~X~期}
+
+\lfoot{}
+\cfoot{-~\thepage~-}%页码\thepage
+\rfoot{}
+
+
+
+
+%正文区开始
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}%引用序号显示在文字右上方。
+\geometry{left=2.5cm, right=2.5cm, top=3.0cm, bottom=2.5cm}%页面设置
+\linespread{1.5}%1.5倍行间距
+
+\begin{document}
+\maketitle %显示标题作者等信息
+
+
+\begin{abstract}
+	\heiti 
+	本文以XXX的统计数据为样本，讨论xxx。分析结果表明，总体上实际使用外资数量确实受到出口贸易的影响，但外商投资企业实际出口额并不影响实际使用外资数量；进口贸易总体情况对实际使用外资作用为负，而外商投资企业进口对实际使用外资作用为正。最后模型回归通过了单位根检验与协整检验，证明方程VECM系统是稳定的。
+	
+\par \textbf{关键词：}外资与进出口贸易；  实际使用外资；   关系检验 
+\end{abstract}
+
+{\normalsize 
+
+\noindent  \section{引言}
+\vspace{0.1cm}
+
+当前全球一经济体化的背景下，外商直接投资对地区经济起到了不可忽略的作用。一方面弥补企业资金缺口，增加企业盈利能力，另一方面外资还可以带动进出口经济的发展。外资的到来一般情况下会夹带先进生产技术与管理经验，还能提供当地就业岗位缓解就业压力。目前，许多学者对进出口贸易与外商直接投资关系进行了研究讨论，但是目前对广东省对外贸易与进出口关系的研究并不多。广东省作为我国发达省份之一，每年的进出口贸易上在全国名列前茅，同时也是吸引外商直接投资的主要地区，广东省对外经济在我国市场上具有导向作用。因此明确广东省进出口贸易与外商直接投资之间内在关联性对外贸市场良性发展具有一定现实意义。
+
+
+{\ }
+
+\noindent   \section{文献回顾与理论综述}
+\noindent  \subsection{文献回顾}
+\vspace{0.1cm}
+
+国外学者对国际直接投资以进出口贸易关系间的研究比较早。为不同的外商直接投资方式对广东外贸影响各不相同，其中外商独资企业促进作用最大，吸引外资可促进外贸的发展。王立好(2009)对中国1980—2006外商直接投资与进出口贸易的计量分析表明，贸易的创造效应比较突出而替代效应也并未完全凸显。朱媛(2011)得出FDI对湖北省出口贸易的互补效应具有显著影响。周煜(2012)重庆外商直接投资对进出口具有显著促进作用，且改善了贸易出口结构。张婷，游碧蓉(2015)得出1985—1998年我国外商直接投资与对外贸易间为互补关系，而1999—2013年间为替代关系。虽然广东省是我国进出口贸易同时也是吸引外资的大省，但国内研究外商直接投资与对外贸易关系的文献中较少以广东省作为研究对象，且文献中选取的数据以签订以合同金额为主，以实际使用外资为变量的研究极少。因此选取2000—2018年广东省实际使用外资进出口贸易数据作为研究样本进行回归分析，探讨广东省外商直接投资与进出口总额之间存在的关系。
+
+
+{\ }
+
+\noindent  \subsection{理论综述}
+\vspace{0.1cm}
+
+
+一直以来，国际直接投资与进出口贸易间的相互关系到底是替代性还是互补性在学术界上备受争议。
+{\ }
+
+  \subsubsection{投资贸易替代性理论}
+  \vspace{0.1cm}
+
+美国经济学家蒙代尔在研究跨国公司在国际经营的投资与贸易关系是首次提出了投资与贸易间的替代性理论。蒙代尔认为，关税壁垒是导致一国以是对外直接投资的形式替代出口贸易的重要原因，如果国际贸易存在贸易壁垒那么原来的跨国企业就会权衡因关税导致原本出口贸易的损失与实行对外直接投资之间的得利，进而以对外直接投资的形式替代原先的进出口贸易。蒙代尔投资贸易替代模型其实是在赫克歇尔—俄林比较优势理论框架上分析的两国的贸易模型。其前提假设除满足H—O理论的两国可自由贸易的前提假设外还需满足：两国间的生产要素存在流动障碍，比如关税壁垒、绿色壁垒与产业壁垒等，但是这种壁垒并不会影响用该要素生产出的商品的自由贸易。
+
+假设X、Y两国分别生产A、B两种产品，A为劳动密集型，B为资本密集型，X国出口A从Y国进口B，而Y国出口B从X国进口A。在国际间能自由贸易时两产品流动不存在阻碍，生产要素没有必要跨国流动。在蒙代尔投资贸易替代模型假设存在关税壁垒，产品的进出口必然受阻。若Y国从X国进口A产品被征收关税，那么X国将会提高产品A的售价以弥补损失。此时对于资本充裕的Y国跨国企业将考虑以直接投资的方式在X国自行生产A产品自足供给，因而外资的流入导致了A产品出口的减少。
+
+蒙代尔这一模型存在这明显的缺陷。首先在当今开放世界经济条件下两国模型并不具有普遍意义，其次模型中涉及的关税贸易壁垒并为说明提高关税的程度，仅仅是强调一旦出现关税壁垒则将会以国际直接投资的方式替代原先的出口贸易。现实的经济体开放程度不尽相同，关税壁垒也在消失。即使存在关税壁垒的前提下许多国家的外商直接投资仍然呈现出互补型的进出口贸易现状，表明外商直接投资与进出口贸易表现出的互补性与替代性仅仅是这两股力量强弱的不同所致。
+
+{\ }
+
+ \subsubsection{投资贸易互补性理论}
+\vspace{0.1cm}
+
+日本学者小岛清(K.Kojima)在1977年出版的代表作《对外直接投资论》中系统阐述了对外直接投资理论的进展，在书中他从国际分工的基本原则为出发点，在比较优势理论的基础上首次提出并建立起了日本模式的边际产业扩张理论，证明了对外贸易与投资之间存在着互补关系。认为国际直接投资与进出口贸易间可以相互促进，投资额的增加会引起进出口贸易的扩大，而进出口贸易的健康发展也会使得外商投资者更倾向于投资该国市场。该理论的核心思想是：对外直接投资应该从本国已经处于或即将处于比较劣势的产业及边际产业依次进行，而这些产业又是在东道国具有明显或潜在的比较优势部门，如果没有外来的资金、技术与管理经验，那么东道国的这些优势就不可能被利用起来。在这种情况下，本国将在国内具有比较劣势而在东道国具有比较优势的产业进行投资，以充分利用东道国这种比较优势来扩大两国的对外贸易额。同时，促进了国内的产业结构调整，增加就业量，社会福利上升并加速技术创新和扩散。
+
+根据对外直接投资的动机，小岛清又将国际直接投资分为三种类型：第一是生产和销售国际化型。这种类型是以大型跨国公司为依托，在全球的范围内通过跨国公司内部，将生产和销售实现横向一体化与纵向一体化占据国际市场，增加跨国公司内部贸易额。第二是市场导向型。随着世界经济一体化进程的加速，出口贸易取得进展显得越发困难，许多国家往往会对最终产品加收较高的进口关税，如果在本国生产再出口就显得不划算。因此，从本国出口重要零部件而在东道国直接投资加工生产最终产品是一个有利的选择。市场导向型动机目的就是在于绕过东道国的贸易壁垒的同时占有该国的市场份额。第三是生产要素导向型。这里的生产要素包括劳动力要素与自然资源要素两大类。劳动力要素方面主要因为国内的劳动力成本高，而在东道国可以获取廉价且丰富的熟练劳工，节约生产成本。资源导向在于克服面临国内处于比较劣势的资源问题，扩大生产因资源匮乏而导致处于比较劣势的产品，这种资本流向促进最终产品生产与原材料生产间的专业化纵向分工。
+
+虽然该理论对一国的对外投资具有指导作用，但它仍然存在自身的局限性。首先，该理论只能解释发达国家与发展中国家之间垂直分工为基础的投资，难以解释发达国家之间水平分工与发展中国家间水平分工的投资。其次，该理论的分析是以国家为主体而不是以跨国公司为主体，难以解释在当今世界经济一体化下跨国公司为主体的错综复杂投资环境及现状。最后，该理论低估了发展中国家的技术创新能力，对欠发达国家失去了指导意义，同时暗示了发展中国家永远只能跟随在发达国家之后，但是现实情况并非如此。
+
+
+
+{\ }
+
+\noindent  \section{研究设计}
+
+\noindent  \subsection{样本选取与数据来源}
+\vspace{0.1cm}
+
+
+
+
+本文构建如下线性模型：
+\begin{center}
+	\begin{spacing}{0.8}%行距0.8
+	\begin{equation}
+	\large 
+\ln fdi_{ti}=\alpha_{1} +\beta_{1}\ln ex_{ti} +\eta_{ 1}\ln exp_{ti} +\sum_{i=ti}^{s}\gamma_{ti} X_{i} +\varepsilon_{ti} \label{eq1} 
+    \end{equation}
+    \begin{equation}
+    \large
+\ln fdi_{tj}=\alpha_{2} +\beta_{2}\ln im_{tj} +\eta_{2}\ln imp_{tj} +\sum_{j=tj}^{s}\gamma_{tj} Y_{j} +\varepsilon_{tj} \label{eq2} 
+    \end{equation} 
+    \end{spacing}
+\end{center}
+
+\begin{equation}
+\large
+I=\frac{\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}w_{ij}(x_{i}-x\hat{-})(x_{j}-x\hat{-})}{S^{2}\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}w_{ij}} \label{eq2} 
+\end{equation}
+
+%大括号公式
+\begin{equation}
+W=\left\{
+\begin{aligned}
+0, &&\text{省份$i$与省份$j$相邻,} \\
+y, &&\text{省份$i$与省份$j$不相邻。}
+\end{aligned}
+\right.
+\end{equation}
+
+
+\begin{center}
+	\begin{spacing}{0.8}
+	\begin{equation}
+	\rho =\frac {COV(X,Y)} {\delta_{X} \delta_{Y}} \label{eq4} 
+	\end{equation}
+	\end{spacing}
+\end{center}
+
+
+\noindent  \subsection{模型构建}
+
+
+\noindent  \section{实证结果与分析}
+
+\noindent  \subsection{ 回归结果分析}
+\vspace{0.1cm}%段后空一行
+
+
+
+{\ }
+
+{\ }
+
+
+\noindent  \subsection{平稳性检验}
+\vspace{0.1cm}
+
+
+
+\noindent  \subsection{协整分析}
+\vspace{0.1cm}
+
+
+\noindent  \section{结论与启示}
+\vspace{0.1cm}
+
+
+
+
+
+\newpage%另起一页
+\large
+\begin{center}
+	\textbf{Inspection of Foreign Direct Investment and Import\&Export Trade Relations in Guangdong Province}
+		
+\textbf{Abstract}
+
+\end{center}
+
+\begin{abstract}
+	This paper takes the statistical data of import and export trade and actual use of foreign capital in Guangdong Province from 2000 to 2018 as a sample to discuss the internal correlation between the actual use of foreign capital in Guangdong Province and import\&export trade. The results show that the actual amount of foreign capital used in general is affected by the export trade, but the actual export volume of foreign-invested enterprises does not affect the actual amount of foreign capital used. The overall situation of import trade has a negative effect on the actual use of foreign capital, while the import of foreign-invested enterprises has a positive effect on the actual use of foreign capital. Finally, the model regression passed the unit root test and cointegration test to prove that the equation VECM system is stable.
+
+\par \textbf{Keywords:} Foreign Investment and Import\&export Trade,   Actual Use of Foreign Capital,  Relationship Test
+\end{abstract}
+
+
+
+
+		
+%手动插入 参考文献插入
+\begin{thebibliography}{99}
+
+	 \bibitem{Forte R}
+	 Forte R. The Relationship Between Foreign Direct Investment and In-ternational Trade Substitution or Complementarity? A Survey[J]. NBER Working Papers, 2004.
+	 
+	 \bibitem{Mundell R A}
+	 Mundell R A. International Trade and Factor Mobility[J]. AmericanEconomic Review, 1957.
+	 \bibitem{何莉}
+	%% 期刊格式Format for Journal Reference
+	% Author, Article title, Journal, Volume, page numbers (year)
+    何莉.关税、出口贸易与对外直接投资：基于蒙代尔模型的检验[J].统计与决策,2017(22):159-162.
+	%%书本格式 Format for books
+	\bibitem{卢荣忠}
+	% Author, Book title, page numbers. Publisher, place (year)
+    卢荣忠, 卢文雯. 国际经济合作（第二版）[M]. 高等教育出版社
+   
+   
+    
+\end{thebibliography}
+
+
+
+
+}%全文字体设置
+
+
+%利用bib文献库插入。
+\bibliographystyle{unsrt}%参考文献格式
+\bibliography{myreference}
+
+\end{document} 
